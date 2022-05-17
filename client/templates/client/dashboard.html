@@ -1,0 +1,179 @@
+{%extends 'client/main.html' %}
+{% load static %}
+{% block content %}
+
+<!-- Wrapper -->
+<div id="wrapper">
+
+{% include 'client/header.html' %}
+
+
+<!-- Dashboard Container -->
+<div class="dashboard-container">
+
+	{% include 'client/nav.html'%}
+
+
+
+
+
+	<!-- Dashboard Content
+	================================================== -->
+	<div class="dashboard-content-container" data-simplebar>
+		<div class="dashboard-content-inner" >
+
+			<!-- Dashboard Headline -->
+			<div class="dashboard-headline">
+				<h3>Howdy, {{request.user.username}}!</h3>
+				<span>We are glad to see you again!</span>
+
+				<!-- Breadcrumbs -->
+				<nav id="breadcrumbs" class="dark">
+					<ul>
+						<li><a href="#">Home</a></li>
+						<li>Dashboard</li>
+					</ul>
+				</nav>
+			</div>
+
+			<!-- Fun Facts Container -->
+			<div class="fun-facts-container" style="margin-bottom: 10px;">
+				<div class="fun-fact" data-fun-fact-color="#36bd78">
+					<div class="fun-fact-text">
+						<span style="color:#36bd78;">Total Jobs  Posted</span>
+						<h4>{{no_of_jobs}}</h4>
+					</div>
+					<div class="fun-fact-icon"><i class="icon-material-outline-gavel"></i></div>
+				</div>
+				<div class="fun-fact" data-fun-fact-color="#b81b7f">
+					<div class="fun-fact-text">
+						<span  style="color:#b81b7f;">Amount Spent</span>
+						<h4>{{request.user.amount_spent}}</h4>
+					</div>
+					<div class="fun-fact-icon"><i class="icon-material-outline-business-center"></i></div>
+				</div>
+				<div class="fun-fact" data-fun-fact-color="#efa80f">
+					<div class="fun-fact-text">
+						<span style="color:#efa80f;">Completed Jobs</span>
+						<h4>{{no_of_completed_jobs}}</h4>
+					</div>
+					<div class="fun-fact-icon"><i class="icon-material-outline-rate-review"></i></div>
+				</div>
+<!-- this one is hidden..sorry -->
+
+
+
+			<div class="fun-facts-container" style="margin-bottom: 10px;">
+						<div class="fun-fact" data-fun-fact-color="blue">
+					<div class="fun-fact-text">
+						<span style="color:blue;">Pending Jobs</span>
+						<h4>{{no_of_pending_jobs}}</h4>
+					</div>
+					<div class="fun-fact-icon"><i class="icon-feather-trending-up"></i></div>
+				</div>
+
+
+<!-- this one is hidden too -->
+
+
+
+
+
+
+						<!-- Row -->
+
+
+
+
+				<!-- Dashboard Box -->
+				<div class="col-xl-6">
+					<div class="dashboard-box">
+						<div class="headline">
+							<h3><i class="icon-material-outline-assignment"></i> Orders</h3>
+						</div>
+						<div class="content">
+							<ul class="dashboard-box-list">
+								{% if orders == 0 %}
+								   <P>No Orders Made</P>
+								{%else%}
+									{% for order in orders %}
+								       <li>
+											<div class="invoice-list-item">
+											<strong>{{order.jobs.title}}</strong>
+												<ul>
+													<li><span class="unpaid">{{order.status}}</span></li>
+													<li>Order: {{order.transaction_id}}</li>
+													<li>Date: {{order.created_at}}</li>
+												</ul>
+											</div>
+									<!-- Buttons -->
+									<div class="buttons-to-right">
+										{% if order.status == 'unpaid' %}
+										   <a href="{% url 'add-funds' %} " class="button">Finish Payment</a>
+										{% else %}
+											<a href="{% url 'invoice' %} " class="button"> View invoice</a>
+										{% endif %}
+									</div>
+								</li>
+									{% endfor %}
+								{% endif %}
+
+							</ul>
+						</div>
+					</div>
+				</div>
+
+			</div>
+			<!-- Row / End -->
+
+
+			<!-- Row -->
+			</div>
+			<!-- Row / End -->
+
+
+			<!-- Footer -->
+			<div class="dashboard-footer-spacer"></div>
+			<div class="small-footer margin-top-15">
+				<div class="small-footer-copyrights">
+					© 2022 <strong>WRITINGS</strong>. All Rights Reserved.
+				</div>
+				<ul class="footer-social-links">
+					<li>
+						<a href="#" title="Facebook" data-tippy-placement="top">
+							<i class="icon-brand-facebook-f"></i>
+						</a>
+					</li>
+					<li>
+						<a href="#" title="Twitter" data-tippy-placement="top">
+							<i class="icon-brand-twitter"></i>
+						</a>
+					</li>
+					<li>
+						<a href="#" title="Google Plus" data-tippy-placement="top">
+							<i class="icon-brand-google-plus-g"></i>
+						</a>
+					</li>
+					<li>
+						<a href="#" title="LinkedIn" data-tippy-placement="top">
+							<i class="icon-brand-linkedin-in"></i>
+						</a>
+					</li>
+				</ul>
+				<div class="clearfix"></div>
+			</div>
+			<!-- Footer / End -->
+
+		</div>
+	</div>
+	<!-- Dashboard Content / End -->
+
+
+</div>
+<!-- Dashboard Container / End -->
+
+
+</div>
+<!-- Wrapper / End -->
+
+{%endblock content%}

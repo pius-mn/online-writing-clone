@@ -1,0 +1,148 @@
+{% extends 'client/main.html' %}
+{% load static %}
+{% block content %}
+ <!-- Wrapper -->
+<div id="wrapper">
+
+{% include 'client/header.html' %}
+
+
+<!-- Dashboard Container -->
+<div class="dashboard-container">
+
+		{% include 'client/nav.html'%}
+
+
+<!-- end Dashboard Sidebar
+================================================== -->
+
+
+
+
+	<!-- Dashboard Content
+	================================================== -->
+	<div class="dashboard-content-container" data-simplebar>
+		<div class="dashboard-content-inner" >
+
+			<!-- Dashboard Headline -->
+			<div class="dashboard-headline margin-top--25">
+				<h3>MAKE PAYMENTS</h3>
+
+				<!-- Breadcrumbs -->
+				<nav id="breadcrumbs" class="dark">
+					<ul>
+						<li><a href="#">Home</a></li>
+						<li><a href="#">Dashboard</a></li>
+						<li>My Pending Jobs</li>
+					</ul>
+				</nav>
+			</div>
+
+
+
+				<!-- Dashboard Box -->
+
+
+
+
+		<div class="col-xl-10 col-lg-10 content-right-offset">
+
+			<!-- Billing Cycle Radios  -->
+			<div class="billing-cycle margin-top-25 margin-bottom-70">
+
+				<!-- Radio -->
+				<div class="radio">
+					<label>AMOUNT DUE:</label>
+							<input type="text" class="input-text with-border" value="KES 6400.80" name="Amount" id="Amount" placeholder="Amount" readonly />
+
+				</div>
+
+
+						<div class="radio">
+							<label>RECEIVER:</label>
+							<input type="text" class="input-text with-border" value="TOM HARDY" name="name" id="name" placeholder="name" readonly />
+
+				</div>
+
+			</div>
+
+
+			<!-- Hedline -->
+			<h3 class="margin-top-50">Payment Method</h3>
+
+			<!-- Payment Methods Accordion -->
+			<div class="payment margin-top-20">
+
+				<div class="payment-tab payment-tab-active">
+					<div class="payment-tab-trigger">
+						<input checked id="paypal" name="cardType" type="radio" value="paypal">
+						<label for="paypal">Account Balances</label>
+						<img class="payment-logo paypal" src="https://davee.co.ke/i.imgur.com/ApBxkXU.png" alt="">
+					</div>
+
+
+					<div class="payment-tab-content">
+						<p>Amount(KES 6400.80) will be deducted from your account and credited to TOM HARDY.</p>
+					</div>
+				</div>
+
+
+				<div class="payment-tab">
+
+
+
+				</div>
+
+			</div>
+			<!-- Payment Methods Accordion / End -->
+
+			<a href="confirm-payments.html" class="button big ripple-effect margin-top-20 margin-bottom-30">Proceed Payment</a>
+		</div>
+
+
+
+
+
+
+
+
+			<!-- Footer -->
+			<div class="dashboard-footer-spacer"></div>
+			<div class="small-footer margin-top-15">
+				<div class="small-footer-copyrights">
+					© 2022 <strong>WRITINGS</strong>. All Rights Reserved.
+				</div>
+				<ul class="footer-social-links">
+					<li>
+						<a href="#" title="Facebook" data-tippy-placement="top">
+							<i class="icon-brand-facebook-f"></i>
+						</a>
+					</li>
+					<li>
+						<a href="#" title="Twitter" data-tippy-placement="top">
+							<i class="icon-brand-twitter"></i>
+						</a>
+					</li>
+					<li>
+						<a href="#" title="Google" data-tippy-placement="top">
+							<i class="icon-brand-google"></i>
+						</a>
+					</li>
+					<li>
+						<a href="#" title="LinkedIn" data-tippy-placement="top">
+							<i class="icon-brand-linkedin-in"></i>
+						</a>
+					</li>
+				</ul>
+				<div class="clearfix"></div>
+			</div>
+			<!-- Footer / End -->
+		</div>
+	</div>
+	<!-- Dashboard Content / End -->
+</div>
+<!-- Dashboard Container / End -->
+
+</div>
+<!-- Wrapper / End -->
+{%endblock content%}

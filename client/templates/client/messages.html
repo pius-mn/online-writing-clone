@@ -1,0 +1,334 @@
+{% extends 'client/main.html' %}
+{% load static %}
+{% block content %}
+<!-- Wrapper -->
+<div id="wrapper">
+
+	{% include 'client/header.html' %}
+
+
+	<!-- Dashboard Container -->
+	<div class="dashboard-container">
+
+		{% include 'client/nav.html'%}
+
+
+
+
+		<!-- Dashboard Content
+	================================================== -->
+		<div class="dashboard-content-container" data-simplebar>
+			<div class="dashboard-content-inner">
+
+				<!-- Dashboard Headline -->
+				<div class="dashboard-headline">
+					<h3>MESSAGES</h3>
+
+					<!-- Breadcrumbs -->
+					<nav id="breadcrumbs" class="dark">
+						<ul>
+							<li><a href="#">Home</a></li>
+							<li><a href="#">Dashboard</a></li>
+							<li>Chat Box</li>
+						</ul>
+					</nav>
+				</div>
+
+				<div class="messages-container margin-top-0">
+
+					<div class="messages-container-inner">
+
+						<!-- Messages -->
+						<div class="messages-inbox">
+							<div class="messages-headline">
+								<div class="input-with-icon">
+									<input id="autocomplete-input" type="text" placeholder="Search">
+									<i class="icon-material-outline-search"></i>
+								</div>
+							</div>
+
+							<ul>
+								{% for u in users %} {% if not u.id == 1 and not u.id == user.id %}
+								<li>
+									<a href="{% url 'chat-home' %}?u={{u.id}}">
+										<div class="message-avatar"><i class="status-icon status-online"></i><img
+												src="images/user-avatar-small-03.jpg" alt="" /></div>
+
+										<div class="message-by">
+											<div class="message-by-headline">
+												<h5>{{u.username}}</h5>
+												<span>4 hours ago</span>
+											</div>
+											<p>Thanks for reaching out. I'm quite busy right now on many</p>
+										</div>
+									</a>
+								</li>
+
+								{% endif %} {% endfor %}
+
+
+
+							</ul>
+						</div>
+						<!-- Messages / End -->
+
+						<!-- Message Content -->
+						<div class="message-content">
+
+							<div class="messages-headline">
+								<h4>Sindy Forest</h4>
+								<a href="#" class="message-action"><i class="icon-feather-trash-2"></i> Delete
+									Conversation</a>
+							</div>
+
+							<!-- Message Content Inner -->
+							<div class="message-content-inner">
+								{% for chat in chats %} {% if chat.user_from == user %}
+
+								<!-- Time Sign -->
+								<div class="message-time-sign">
+									<span>{{chat.date_created|date:"M-d-Y H:i"}}</span>
+								</div>
+
+								<div class="message-bubble me">
+									<div class="message-bubble-inner" data-id="{{chat.id}}">
+										<div class="message-avatar"><img src="images/user-avatar-small-01.jpg" alt="" />
+										</div>
+										<div class="message-text">
+											<p>{{chat.message}}</p>
+										</div>
+									</div>
+									<div class="clearfix"></div>
+								</div>
+								{% else %}
+
+								<div class="message-bubble">
+									<div class="message-bubble-inner" data-id="{{chat.id}}">
+										<div class="message-avatar"><img src="images/user-avatar-small-02.jpg" alt="" />
+										</div>
+										<div class="message-text">
+											<p>{{chat.message}}</p>
+										</div>
+									</div>
+									<div class="clearfix"></div>
+								</div>
+								{% endif %} {% endfor %}
+
+
+
+
+							</div>
+
+							<!-- Message Content Inner / End -->
+
+							<!-- Reply Area -->
+
+							<form action=" " id="post-form" class="message-reply">
+								<input type="hidden" name="user_from" id="user_from" value="{{ user.id }}">
+								<input type="hidden" name="user_to" id="user_to" value="{{ chat_id }}">
+
+								<textarea name="message" id="message" cols="1" rows="1" placeholder="Your Message"
+									data-autoresize></textarea>
+								<button class="button ripple-effect">Send</button>
+							</form>
+
+
+						</div>
+						<!-- Message Content -->
+
+					</div>
+				</div>
+				<!-- Messages Container / End -->
+
+
+
+				<!-- Footer -->
+				<div class="dashboard-footer-spacer"></div>
+				<div class="small-footer margin-top-15">
+					<div class="small-footer-copyrights">
+						© 2022 <strong>WRITINGS</strong>. All Rights Reserved.
+					</div>
+					<ul class="footer-social-links">
+						<li>
+							<a href="#" title="Facebook" data-tippy-placement="top">
+								<i class="icon-brand-facebook-f"></i>
+							</a>
+						</li>
+						<li>
+							<a href="#" title="Twitter" data-tippy-placement="top">
+								<i class="icon-brand-twitter"></i>
+							</a>
+						</li>
+						<li>
+							<a href="#" title="Google" data-tippy-placement="top">
+								<i class="icon-brand-google"></i>
+							</a>
+						</li>
+						<li>
+							<a href="#" title="LinkedIn" data-tippy-placement="top">
+								<i class="icon-brand-linkedin-in"></i>
+							</a>
+						</li>
+					</ul>
+					<div class="clearfix"></div>
+				</div>
+				<!-- Footer / End -->
+			</div>
+		</div>
+		<!-- Dashboard Content / End -->
+
+	</div>
+	<!-- Dashboard Container / End -->
+
+</div>
+<!-- Wrapper / End -->
+
+
+<!-- Apply for a job popup
+================================================== -->
+<div id="small-dialog" class="zoom-anim-dialog mfp-hide dialog-with-tabs">
+
+	<!--Tabs -->
+	<div class="sign-in-form">
+
+		<ul class="popup-tabs-nav">
+			<li><a href="#tab">Add Note</a></li>
+		</ul>
+
+		<div class="popup-tabs-container">
+
+			<!-- Tab -->
+			<div class="popup-tab-content" id="tab">
+
+				<!-- Welcome Text -->
+				<div class="welcome-text">
+					<h3>Do Not Forget 😎</h3>
+				</div>
+
+				<!-- Form -->
+				<form method="post" id="add-note">
+
+					<select class="selectpicker with-border default margin-bottom-20" data-size="7" title="Priority">
+						<option>Low Priority</option>
+						<option>Medium Priority</option>
+						<option>High Priority</option>
+					</select>
+
+					<textarea name="textarea" cols="10" placeholder="Note" class="with-border"></textarea>
+
+				</form>
+
+				<!-- Button -->
+				<button class="button full-width button-sliding-icon ripple-effect" type="submit" form="add-note">Add
+					Note <i class="icon-material-outline-arrow-right-alt"></i></button>
+
+			</div>
+
+		</div>
+	</div>
+</div>
+<!-- Apply for a job popup / End -->
+<script>
+    $(function() {
+        if ($('.message-bubble-inner:last').length > 0) {
+            $('.message-content-inner').animate({
+                scrollTop: $('.message-bubble-inner:last').offset().top
+            }, 'fast')
+        }
+        $('#post-form').submit(function(e) {
+            e.preventDefault()
+            //start_loader()
+            $.ajax({
+                headers: {
+                    "X-CSRFToken": '{{csrf_token}}'
+                },
+                url: "{% url 'chat-send' %}",
+                method: "POST",
+                data: $(this).serialize(),
+                dataType: "json",
+                error: err => {
+                    console.log(err)
+                    alert('an error occured')
+                },
+                success: function(resp) {
+                    if (typeof resp == "object" && resp.status == 'success') {
+                        location.reload()
+                    } else {
+                        consol.log(resp)
+                        alert('an error occured')
+                    }
+                }
+            })
+
+
+
+        })
+        chats_renew()
+        setInterval(() => {
+            chats_renew()
+        }, 2500)
+
+    })
+
+    function chats_renew() {
+        var last_id = 0
+        if ($('.message-bubble-inner').length > 0)
+            last_id = $('.message-bubble-inner:last').attr('data-id')
+			
+        $.ajax({
+            headers: {
+                "X-CSRFToken": '{{csrf_token}}'
+            },
+            url: "{% url 'chat-renew' %}",
+            method: "GET",
+            data: {
+                last_id: last_id,
+                user_id: '{{user.id}}',
+                chat_id: '{{chat_id}}'
+            },
+            dataType: 'json',
+            error: err => {
+                console.log(err)
+                    // alert('an error occured')
+            },
+			
+            success: function(resp) {
+                if (Object.keys(resp).length > 0) {
+                    Object.keys(resp).map(k => {
+                        if (resp[k].id.user_from == '{{user.id}}') {
+                            bubble = '<div class="message-bubble me">' +
+								'<div class="message-bubble-inner" data-id="' + resp[k].id + '">' +
+								'<div class="message-avatar"><img src="images/user-avatar-small-01.jpg" alt="" />' +
+								'</div>' +
+								'<div class="message-text">' +
+								'<p>' + resp[k].message + '</p>' +
+								'</div>' +
+								'</div>' +
+								'<div class="clearfix"></div>' +
+								'</div>';
+                        } else {
+                            bubble = '<div class="message-bubble">' +
+								'<div class="message-bubble-inner" data-id="' + resp[k].id + '">' +
+								'<div class="message-avatar"><img src="images/user-avatar-small-01.jpg" alt="" />' +
+								'</div>' +
+								'<div class="message-text">' +
+								'<p>' + resp[k].message + '</p>' +
+								'</div>' +
+								'</div>' +
+								'<div class="clearfix"></div>' +
+								'</div>';
+                        }
+                        // console.log(bubble)
+                        $('.message-content-inner').append(bubble)
+                        $('.simplebar-scroll-content').animate({
+                            scrollTop: $('.simplebar-scroll-content:last').offset.top*1000
+                        }, 'fast')
+                    })
+                }
+            }
+        })
+    }
+</script>
+
+
+{% endblock content %}

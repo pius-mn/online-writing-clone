@@ -1,0 +1,88 @@
+<!doctype html>
+{% load static %}
+<html lang="en">
+
+<!-- Mirrored from www.vasterad.com/themes/hireo_21/pages-login.html by HTTrack Website Copier/3.x [XR&CO'2014], Tue, 22 Mar 2022 17:15:59 GMT -->
+
+<!-- Mirrored from davee.co.ke/writings-final/freelancer/available-jobs.php by HTTrack Website Copier/3.x [XR&CO'2014], Mon, 28 Mar 2022 08:54:12 GMT -->
+<!-- Added by HTTrack -->
+<meta http-equiv="content-type" content="text/html;charset=UTF-8" /><!-- /Added by HTTrack -->
+
+<head>
+
+	<!-- Basic Page Needs
+================================================== -->
+	<title>FREELANCERS</title>
+	<meta charset="utf-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+
+	<!-- CSS
+================================================== -->
+	<link rel="stylesheet" href='{% static "css/style.css"%}'>
+	<link rel="stylesheet" href='{% static "css/colors/blue.css"%}'>
+
+</head>
+
+<body>
+
+	{% block content %}
+
+	{% endblock content %}
+
+	<!-- Scripts
+================================================== -->
+	<script src='{% static "js/jquery-3.4.1.min.js"%}'></script>
+	<script src='{% static "js/jquery-migrate-3.1.0.min.html"%}'></script>
+	<script src='{% static "js/mmenu.min.js"%}'></script>
+	<script src='{% static "js/tippy.all.min.js"%}'></script>
+	<script src='{% static "js/simplebar.min.js"%}'></script>
+	<script src='{% static "js/bootstrap-slider.min.js"%}'></script>
+	<script src='{% static "js/bootstrap-select.min.js"%}'></script>
+	<script src='{% static "js/snackbar.js"%}'></script>
+	<script src='{% static "js/clipboard.min.js"%}'></script>
+	<script src='{% static "js/counterup.min.js"%}'></script>
+	<script src='{% static "js/magnific-popup.min.js"%}'></script>
+	<script src='{% static "js/slick.min.js"%}'></script>
+	<script src='{% static "js/custom.js"%}'></script>
+
+	<!-- Snackbar // documentation: https://www.polonel.com/snackbar/ -->
+	<script>
+		// Snackbar for user status switcher
+		$('#snackbar-user-status label').click(function () {
+			Snackbar.show({
+				text: 'Your status has been changed!',
+				pos: 'bottom-center',
+				showAction: false,
+				actionText: "Dismiss",
+				duration: 3000,
+				textColor: '#fff',
+				backgroundColor: '#383838'
+			});
+		}); 
+	</script>
+
+	<!-- Google Autocomplete -->
+	<script>
+		function initAutocomplete() {
+			var options = {
+				types: ['(cities)'],
+				// componentRestrictions: {country: "us"}
+			};
+
+			var input = document.getElementById('autocomplete-input');
+			var autocomplete = new google.maps.places.Autocomplete(input, options);
+		}
+	</script>
+
+	<!-- Google API & Maps -->
+	<!-- Geting an API Key: https://developers.google.com/maps/documentation/javascript/get-api-key -->
+	<script
+		src="https://maps.googleapis.com/maps/api/js?key=AIzaSyAaoOT9ioUE4SA8h-anaFyU4K63a7H-7bc&amp;libraries=places"></script>
+
+</body>
+
+<!-- Mirrored from www.vasterad.com/themes/hireo_21/tasks-list-layout-2.html by HTTrack Website Copier/3.x [XR&CO'2014], Tue, 22 Mar 2022 17:15:46 GMT -->
+
+<!-- Mirrored from davee.co.ke/writings-final/freelancer/available-jobs.php by HTTrack Website Copier/3.x [XR&CO'2014], Mon, 28 Mar 2022 08:54:12 GMT -->
+
+</html>

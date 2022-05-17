@@ -1,0 +1,169 @@
+{% load static %}
+<!-- Header -->
+<div id="header">
+  <div class="container">
+
+
+    <!-- nav bar -->
+
+    <!-- Left Side Content -->
+    <div class="left-side">
+
+      <!-- Logo -->
+      <div id="logo">
+        <a href="{% url 'landingpage'%}"><img src='{% static "images/logo2.png"%}'
+            data-sticky-logo='{% static "images/logo.png"%}' data-transparent-logo='{% static "images/logo2.png"%}'
+            alt=""></a>
+      </div>
+
+      <!-- Main Navigation -->
+      {% if request.user.is_authenticated %}
+      <nav id="navigation">
+        <ul id="responsive">
+
+          <li><a href="{% url 'landingpage'%}" class="current">Home</a>
+          </li>
+          <li><a href="{% url 'freelancerprofile' %}">Profile</a></li>
+          <li><a href="{% url 'freelancersettings' %}">Settings</a></li>
+
+
+
+
+          <li style="margin-top:-3px;"><a href="#">Jobs</a>
+            <ul class="dropdown-nav">
+              <li><a href="{% url 'freelanceravailablejobs' %}">Available Jobs</a></li>
+              <li><a href="{% url 'freelancermyjobs' %}">Active Jobs</a></li>
+              <li><a href="{% url 'freelancercompletedjobs' %}">Completed Jobs</a></li>
+              <li><a href="{% url 'freelancerdisputedjobs' %}">Disputed Jobs</a></li>
+
+            </ul>
+          </li>
+
+
+          <!-- 
+						<li><a href="#">Other pages</a>
+							<ul class="dropdown-nav">
+								<li><a href="profile.php">Profile</a></li>
+								<li><a href="settings.php">Settings</a></li>
+							</ul>
+						</li> -->
+
+        </ul>
+      </nav>
+      {% endif %}
+      <div class="clearfix"></div>
+      <!-- Main Navigation / End -->
+
+    </div>
+    <!-- Left Side Content / End -->
+
+
+    <!-- Right Side Content / End -->
+    <div class="right-side">
+
+      <!--  User Notifications -->
+      <div class="header-widget hide-on-mobile">
+
+        <!-- Notifications -->
+        <div class="header-notifications">
+
+          <!-- Trigger -->
+
+
+          <!-- Dropdown -->
+          <div class="header-notifications-dropdown">
+
+
+
+
+
+          </div>
+
+        </div>
+
+        <!-- Messages -->
+        <div class="header-notifications">
+
+
+          <!-- Dropdown -->
+          <div class="header-notifications-dropdown">
+
+
+            <a href="dashboard-messages.html" class="header-notifications-button ripple-effect button-sliding-icon">View
+              All Messages<i class="icon-material-outline-arrow-right-alt"></i></a>
+          </div>
+        </div>
+
+      </div>
+      <!--  User Notifications / End -->
+
+      <!-- User Menu -->
+      <div class="header-widget">
+
+        <!-- Messages -->
+        {% if request.user.is_authenticated %}
+        <div class="header-notifications user-menu">
+          <div class="header-notifications-trigger">
+            <a href="#">
+              <div class="user-avatar status-online"><img src="{{ request.user.profile_image.url }}" alt=""></div>
+            </a>
+          </div>
+
+          <!-- Dropdown -->
+          <div class="header-notifications-dropdown">
+
+            <!-- User Status -->
+            <div class="user-status">
+
+              <!-- User Name / Avatar -->
+              <div class="user-details">
+                <div class="user-avatar status-online"><img src="{{ request.user.profile_image.url }}" alt="">
+                </div>
+                <div class="user-name">
+                  {{ request.user.username }} <span>
+                    {%if request.user.is_client%}
+                    client
+                    {%else%}
+                    freelancer
+                    {%endif%}</span>
+                </div>
+              </div>
+
+              <!-- User Status Switcher -->
+              <div class="status-switch" id="snackbar-user-status">
+                <label class="user-online current-status">Online</label>
+                <!-- Status Indicator -->
+                <span class="status-indicator" aria-hidden="true"></span>
+              </div>
+            </div>
+
+            <ul class="user-menu-small-nav">
+              <li><a href="#"><i class="icon-material-outline-dashboard"></i> Home</a></li>
+              {% if request.user.role == 'client'%}
+              <li><a href="{% url 'dashboard' %}"><i class="icon-material-outline-settings"></i> Dasboard</a></li>
+              {%endif%}
+
+              <li><a href="{% url 'logout'%}"><i class="icon-material-outline-power-settings-new"></i> Logout</a>
+              </li>
+            </ul>
+
+          </div>
+          {%else%}
+          <div class="intro-search-button">
+            <a href="{% url 'login'%}">
+              <button class="button ripple-effect">Login</button>
+            </a>
+          </div>
+          {%endif%}
+        </div>
+
+      </div>
+      <!-- User Menu / End -->
+
+      <!-- Mobile Navigation Button -->
+
+    </div>
+    <!-- Right Side Content / End -->
+  </div>
+</div>
+<!-- Header / End -->

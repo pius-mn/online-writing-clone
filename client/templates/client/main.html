@@ -1,0 +1,142 @@
+<!Doctype html>
+{% load static %}
+<html lang="en">
+
+<head>
+
+	<!-- Basic Page Needs
+================================================== -->
+	<title>WRITING</title>
+	<meta charset="utf-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+
+	<!-- CSS
+================================================== -->
+	<link rel="stylesheet" href='{% static "css/style.css"%}'>
+
+	<link rel="stylesheet" href='{% static "css/colors/blue.css"%}'>
+	<script src='{% static "js/jquery-3.4.1.min.js"%}'></script>
+	<script src='{% static "js/jquery-migrate-3.1.0.min.html"%}'></script>
+	<script src='{% static "js/mmenu.min.js"%}'></script>
+	<script src='{% static "js/tippy.all.min.js"%}'></script>
+	<script src='{% static "js/simplebar.min.js"%}'></script>
+	<script src='{% static "js/bootstrap-slider.min.js"%}'></script>
+	<script src='{% static "js/bootstrap-select.min.js"%}'></script>
+	<script src='{% static "js/snackbar.js"%}'></script>
+	<script src='{% static "js/clipboard.min.js"%}'></script>
+	<script src='{% static "js/counterup.min.js"%}'></script>
+	<script src='{% static "js/magnific-popup.min.js"%}'></script>
+	<script src='{% static "js/slick.min.js"%}'></script>
+	<script src='{% static "js/custom.js"%}'></script>
+	<script type="text/javascript" src='{% static "js/chat.js"%}'>
+	
+	</script>
+
+</head>
+
+<body class="gray">
+
+	{% block content %}
+
+	{% endblock content %}
+
+
+
+
+
+	<!-- Scripts
+================================================== -->
+	
+	
+<!-- <script type="text/javascript">
+	var last_id = 0;
+	if ($('.message-bubble-inner').length > 0)
+		last_id = $('.message-bubble-inner:last').attr('data-id')
+	$(document).ready(function () {
+
+		setInterval(function () {
+			$.ajax({
+				type: 'GET',
+				url: "{% url 'chat-renew' %}",
+				data: {
+					last_id: last_id,
+					user_id: '{{user.id}}',
+					chat_id: '{{chat_id}}',
+					csrfmiddlewaretoken: $('input[name=csrfmiddlewaretoken]').val(),
+				},
+				success: function (response) {
+
+					$(".message-container-inner").empty();
+					Object.keys(response).forEach(function (key) {
+						var temp = '<div class="message-bubble">' +
+							'<div class="message-bubble-inner" data-id="' + resp[key].id + '">' +
+							'<div class="message-avatar"><img src="images/user-avatar-small-01.jpg" alt="" />' +
+							'</div>' +
+							'<div class="message-text">' +
+							'<p>' + resp[key].message + '</p>' +
+							'</div>' +
+							'</div>' +
+							'<div class="clearfix"></div>' +
+							'</div>';
+						$(".message-container-inner").append(temp);
+						console.log(key, response[key]);
+					});
+
+
+
+
+				},
+				error: function (response) {
+					alert('An error occured')
+				}
+			});
+		}, 1000);
+	})
+	$(document).on('submit', '#post-form', function (e) {
+		e.preventDefault();
+
+		$.ajax({
+			type: 'POST',
+
+			url: "{% url 'chat-send' %}",
+			data: {
+				user_id: '{{user.id}}',
+				chat_id: '{{chat_id}}',
+				message: $('#message').val(),
+				csrfmiddlewaretoken: $('input[name=csrfmiddlewaretoken]').val(),
+			},
+			success: function (data) {
+				alert(data)
+			}
+		});
+		document.getElementById('message').value = ''
+	});
+</script> -->
+
+	<!-- Snackbar // documentation: https://www.polonel.com/snackbar/ -->
+	<script>
+		// Snackbar for user status switcher
+		$('#snackbar-user-status label').click(function () {
+			Snackbar.show({
+				text: 'Your status has been changed!',
+				pos: 'bottom-center',
+				showAction: false,
+				actionText: "Dismiss",
+				duration: 3000,
+				textColor: '#fff',
+				backgroundColor: '#383838'
+			});
+		});
+	</script>
+
+	<!-- Chart.js // documentation: http://www.chartjs.org/docs/latest/ -->
+	<script src='{% static "js/chart.min.js" %}'></script>
+
+
+</body>
+
+<!-- Mirrored from www.vasterad.com/themes/hireo_21/dashboard.html by HTTrack Website Copier/3.x [XR&CO'2014], Tue, 22 Mar 2022 17:15:51 GMT -->
+
+<!-- Mirrored from davee.co.ke/writings-final/employer/dashboard.php by HTTrack Website Copier/3.x [XR&CO'2014], Mon, 28 Mar 2022 09:06:47 GMT -->
+
+</html>

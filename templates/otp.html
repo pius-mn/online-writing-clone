@@ -1,0 +1,104 @@
+{% extends 'auth_main.html'%}
+{% block content %}
+
+<!-- Wrapper -->
+<div id="wrapper">
+
+
+<!-- Header Container / End -->
+
+<!-- Titlebar
+================================================== -->
+
+<div id="titlebar" class="gradient" style="margin-top: -80px;">
+	<div class="container">
+		<div class="row">
+			<div class="col-md-12">
+
+
+
+				<!-- Breadcrumbs -->
+				<nav id="breadcrumbs" class="dark">
+					<ul>
+						<li><a href="#">Welcome</a></li>
+						<li>Log In</li>
+					</ul>
+				</nav>
+
+			</div>
+		</div>
+	</div>
+</div>
+
+
+<!-- Page Content
+================================================== -->
+<div class="container">
+	<div class="row">
+		<div class="col-xl-6 offset-xl-3">
+
+
+			<div class="login-register-page" style="margin-top:-40px;">
+			<!--Tabs -->
+	<div class="sign-in-form">
+		<div class="popup-tabs-container">
+
+			<!-- Login -->
+			<div class="popup-tab-content" id="freelancer">
+
+				<!-- Welcome Text -->
+				<div class="welcome-text">
+					<h3>We're glad to see you!</h3>
+					<span>Already signed up Enter otp </span>
+				</div>
+				{% if messages %}
+					{% for message in messages %}
+						<div class="notification {{message.tags}} closeable">
+							<p>{{message}}</p>
+							<a class="close"></a>
+						</div>
+					{% endfor %}
+				{% endif %}
+				<!-- Form -->
+				<form method="post" action="">
+					{%csrf_token%}
+					<div class="input-with-icon-left">
+						<i class="icon-material-baseline-mail-outline"></i>
+						<input type="text"  class="input-text with-border" name="otp" id="emailaddress" placeholder="Otp" required/>
+					</div>
+		<button class="button full-width button-sliding-icon ripple-effect" type="submit">Verify <i class="icon-material-outline-arrow-right-alt"></i></button>
+				</form>
+
+
+
+				<!-- Social Login -->
+				<div class="social-login-separator"><span>or</span></div>
+				<div class="social-login-buttons">
+					<button class="facebook-login ripple-effect"><i class="icon-brand-facebook-f"></i> Log In via Facebook</button>
+					<button class="google-login ripple-effect"><i class="icon-brand-google"></i> Log In via Google</button>
+				</div>
+
+			</div>
+
+		</div>
+	</div>
+</div>
+		</div>
+	</div>
+</div>
+
+
+
+
+
+
+
+<!-- Spacer -->
+<div class="margin-top-70"></div>
+<!-- Spacer / End-->
+
+
+</div>
+<!-- Wrapper / End -->
+
+{% endblock content %}

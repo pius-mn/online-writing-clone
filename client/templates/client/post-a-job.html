@@ -1,0 +1,184 @@
+{% extends 'client/main.html' %}
+{%load static %}
+{%block content %}
+<!-- Wrapper -->
+<div id="wrapper">
+
+<!-- Header Container
+================================================== -->
+{% include 'client/header.html' %}
+
+
+<!-- Dashboard Container -->
+<div class="dashboard-container">
+
+{% include 'client/nav.html'%}
+================================================== -->
+
+
+
+
+	<!-- Dashboard Content
+	================================================== -->
+	<div class="dashboard-content-container" data-simplebar>
+		<div class="dashboard-content-inner" >
+
+			<!-- Dashboard Headline -->
+			<div class="dashboard-headline">
+				<h3>POST A JOB</h3>
+
+				<!-- Breadcrumbs -->
+				<nav id="breadcrumbs" class="dark">
+					<ul>
+						<li><a href="#">Home</a></li>
+						<li><a href="#">Dashboard</a></li>
+						<li>Post a Job</li>
+					</ul>
+				</nav>
+			</div>
+
+			<!-- Row -->
+			<div class="row">
+
+				<!-- Dashboard Box -->
+				<div class="col-xl-12">
+					<div class="dashboard-box margin-top-0">
+
+						<!-- Headline -->
+						<div class="headline">
+							<h3><i class="icon-feather-folder-plus"></i> Job Submission Form</h3>
+						</div>
+						<form method="post" enctype="multipart/form-data">
+							{%csrf_token%}
+							<div class="content with-padding padding-bottom-10">
+							<div class="row">
+
+								<div class="col-xl-4">
+									<div class="submit-field">
+										<h5>Job Title</h5>
+										<input type="text" name="title" class="with-border">
+									</div>
+								</div>
+
+								<div class="col-xl-4">
+									<div class="submit-field">
+										<h5>Job Type</h5>
+										<select class="selectpicker with-border" data-size="7" name="type" title="Select Job Type">
+											<option value="fulltime">Full Time</option>
+											<option value="freelance">Freelance</option>
+											<option value="parttime">Part Time</option>
+											<option value="internship">Internship</option>
+											<option value="temporary">Temporary</option>
+										</select>
+									</div>
+								</div>
+
+								<div class="col-xl-4">
+									<div class="submit-field">
+										<h5>Job Category</h5>
+										<select class="selectpicker with-border" data-size="7" name="category" title="Select Category">
+											<option value="Accounting and Finance">Accounting and Finance</option>
+											<option value="Clerical & Data Entry">Clerical & Data Entry</option>
+											<option value="Counseling">Counseling</option>
+											<option value="Court Administration">Court Administration</option>
+											<option value="Human Resources">Human Resources</option>
+											<option value="Investigative">Investigative</option>
+											<option value="IT and Computers">IT and Computers</option>
+											<option value="Law Enforcement">Law Enforcement</option>
+											<option value="Management">Management</option>
+											<option value="Miscellaneous">Miscellaneous</option>
+											<option value="Public Relations">Public Relations</option>
+										</select>
+									</div>
+								</div>
+
+								<div class="col-xl-12">
+									<div class="submit-field">
+										<h5>Salary</h5>
+										<div class="row">
+											<div class="col-xl-6">
+												<div class="input-with-icon">
+													<input class="with-border" name="minsal" type="text" placeholder="Min">
+													<i class="currency">USD</i>
+												</div>
+											</div>
+											<div class="col-xl-6">
+												<div class="input-with-icon">
+													<input class="with-border" name="maxsal" type="text" placeholder="Max">
+													<i class="currency">USD</i>
+												</div>
+											</div>
+										</div>
+									</div>
+								</div>
+
+
+
+								<div class="col-xl-12">
+									<div class="submit-field">
+										<h5>Job Description</h5>
+										<textarea cols="30" rows="5" name="description" class="with-border"></textarea>
+										<div class="uploadButton margin-top-30">
+											<input class="uploadButton-input" type="file" name="uploadedfile" accept="image/*, application/pdf" id="upload" multiple/>
+											<label class="uploadButton-button ripple-effect" for="upload">Upload Files</label>
+											<span class="uploadButton-file-name">Images or documents that might be helpful in describing your job</span>
+										</div>
+									</div>
+								</div>
+
+							</div>
+						</div>
+							<div class="col-xl-12">
+								<button class="button ripple-effect big margin-top-30" type="submit"> <i class="icon-feather-plus"></i> Post a Job </button>
+				</div>
+						</form>
+
+					</div>
+				</div>
+
+
+
+			</div>
+			<!-- Row / End -->
+
+			<!-- Footer -->
+			<div class="dashboard-footer-spacer"></div>
+			<div class="small-footer margin-top-15">
+				<div class="small-footer-copyrights">
+					© 2022 <strong>WRITINGS</strong>. All Rights Reserved.
+				</div>
+				<ul class="footer-social-links">
+					<li>
+						<a href="#" title="Facebook" data-tippy-placement="top">
+							<i class="icon-brand-facebook-f"></i>
+						</a>
+					</li>
+					<li>
+						<a href="#" title="Twitter" data-tippy-placement="top">
+							<i class="icon-brand-twitter"></i>
+						</a>
+					</li>
+					<li>
+						<a href="#" title="Google" data-tippy-placement="top">
+							<i class="icon-brand-google"></i>
+						</a>
+					</li>
+					<li>
+						<a href="#" title="LinkedIn" data-tippy-placement="top">
+							<i class="icon-brand-linkedin-in"></i>
+						</a>
+					</li>
+				</ul>
+				<div class="clearfix"></div>
+			</div>
+			<!-- Footer / End -->
+		</div>
+	</div>
+	<!-- Dashboard Content / End -->
+
+</div>
+<!-- Dashboard Container / End -->
+
+</div>
+<!-- Wrapper / End -->
+{%endblock content %}
